@@ -1,0 +1,89 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package lambdaexpnpractice;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
+
+/**
+ *
+ * @author Chandana I K
+ */
+class Product {
+String name;
+int id;
+int price;
+
+    public Product(String name, int id, int price) {
+        this.name = name;
+        this.id = id;
+        this.price = price;
+    }
+  
+
+}
+ 
+public class LambdaExpnPractice {
+
+    /**
+     * @param args the command line arguments
+     */
+static boolean checkAge(int age){
+ if(age > 30){
+    return true;
+}
+return false;
+}
+
+static String show(String msg){
+return "Hello "+msg;
+}
+
+  static void display(ArrayList<Integer> list){
+ int sum =0;
+     for(Integer i : list){
+         sum+=i;
+} 
+System.out.println(sum);
+}
+
+ static String printMsg(String s){
+   return "Hello "+s;
+}
+    public static void main(String[] args) {
+        // TODO code application logic here
+  
+     Predicate<Integer> pr = LambdaExpnPractice :: checkAge;
+     boolean result = pr.test(30);
+     //System.out.println(result.negate());
+
+    Function<String,String> fun = LambdaExpnPractice::show;
+    System.out.println(fun.apply("Good"));
+
+    List<Integer> list = new ArrayList<>();
+    list.add(10);
+    list.add(20);
+    list.add(30);
+
+//    Function<ArrayList<Integer>,Integer>  fun1 = LambdaExpnPractice::display;
+//    System.out.println(fun1.apply((ArrayList<Integer>) list));
+
+    Consumer<ArrayList<Integer>> con = LambdaExpnPractice::display;
+     con.accept((ArrayList<Integer>) list);
+
+   Supplier<Double> sup = () ->  Math.random();
+   System.out.println(sup.get());
+    }
+
+      
+}
+
+ 
